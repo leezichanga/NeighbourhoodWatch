@@ -1,0 +1,177 @@
+{% extends 'base.html' %} {% load bootstrap3 %} {% load static %} {% block content %} {{block.super}}
+<div class="container mt-5">
+  <div class="row mt-5"></div>
+  {% for user in myuser %} {% if user.user.id == current_user.id %} {% for neiba in hood %} {% if neiba.name == "Pipeline" %}
+  <div class="row mt-5">
+    <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5">
+      <img src="/static/img/architecture/house1.jpeg" alt="" style="height:100%;">
+    </div>
+    <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2"></div>
+    <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5 mt-1">
+      <p>Name: {{neiba.name | title}}</p>
+      <p>Location: <i>{{neiba.location | title}}</i></p>
+      <p>Number of occupants: <b>{{neiba.occupants_count}}</b></p>
+      <p>Health Department Contact: {{neiba.health_number}}</p>
+      <p>Police Department Contact: {{neiba.police_number}}</p>
+    </div>
+  </div>
+  <hr>
+  <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"></div>
+  <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10">
+    {% for post in posts %} {% if post.editor.neighborhood.id == neiba.id%}
+    <div class="card card-default" style="margin-bottom:50px">
+      <div class="card-header">
+        {% if post.editor.profille_pic %}
+        <img src="{{post.editor.profille_pic.url}}" alt="" class="img-fluid rounded-circle" style="width:10%;height:10%">
+        <a href="#">{{post.editor}}</a> {% endif %}
+      </div>
+      <div class="card-body">
+        <p>{{post.post}}</p>
+      </div>
+      <div class="card-footer">
+        <p><b>{{post.post_date | timesince}} ago</b></p>
+      </div>
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+  <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"></div>
+  {% elif neiba.name == 'Kiserian' %}
+  <div class="row mt-5">
+    <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5">
+      <img src="/static/img/architecture/house2.jpeg" alt="" style="height:100%;">
+    </div>
+    <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2"></div>
+    <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5 mt-1">
+      <p>Name: {{neiba.name | title}}</p>
+      <p>Location: <i>{{neiba.location | title}}</i></p>
+      <p>Number of occupants: <b>{{neiba.occupants_count}}</b></p>
+      <p>Health Department Contact: {{neiba.health_number}}</p>
+      <p>Police Department Contact: {{neiba.police_number}}</p>
+    </div>
+  </div>
+  <hr>
+  <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"></div>
+  <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10">
+    {% for post in posts %} {% if post.editor.neighborhood.id == neiba.id%}
+    <div class="card card-default" style="margin-bottom:50px">
+      <div class="card-header">
+        {% if post.editor.profille_pic %}
+        <img src="{{post.editor.profille_pic.url}}" alt="" class="img-fluid rounded-circle" style="width:10%;height:10%">
+        <a href="#">{{post.editor}}</a> {% endif %}
+      </div>
+      <div class="card-body">
+        <p>{{post.post}}</p>
+      </div>
+      <div class="card-footer">
+        <p><b>{{post.post_date | timesince}} ago</b></p>
+      </div>
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+  <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"></div>
+  {% elif neiba.name == 'Multimedia'%}
+  <div class="row mt-5">
+    <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5">
+      <img src="/static/img/architecture/house1.jpeg" alt="" style="height:100%;">
+    </div>
+    <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2"></div>
+    <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5 mt-1">
+      <p>Name: {{neiba.name | title}}</p>
+      <p>Location: <i>{{neiba.location | title}}</i></p>
+      <p>Number of occupants: <b>{{neiba.occupants_count}}</b></p>
+      <p>Health Department Contact: {{neiba.health_number}}</p>
+      <p>Police Department Contact: {{neiba.police_number}}</p>
+    </div>
+  </div>
+  <hr>
+  <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"></div>
+  <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10">
+    {% for post in posts %} {% if post.editor.neighborhood.id == neiba.id%}
+    <div class="card card-default" style="margin-bottom:50px">
+      <div class="card-header">
+        {% if post.editor.profille_pic %}
+        <img src="{{post.editor.profille_pic.url}}" alt="" class="img-fluid rounded-circle" style="width:10%;height:10%">
+        <a href="#">{{post.editor}}</a> {% endif %}
+      </div>
+      <div class="card-body">
+        <p>{{post.post}}</p>
+      </div>
+      <div class="card-footer">
+        <p><b>{{post.post_date | timesince}} ago</b></p>
+      </div>
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+  <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"></div>
+  {% elif neiba.name == 'StMarys' %}
+  <div class="row mt-5">
+    <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5">
+      <img src="/static/img/architecture/house1.jpeg" alt="" style="height:100%;">
+    </div>
+    <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2"></div>
+    <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5 mt-1">
+      <p>Name: {{neiba.name | title}}</p>
+      <p>Location: <i>{{neiba.location | title}}</i></p>
+      <p>Number of occupants: <b>{{neiba.occupants_count}}</b></p>
+      <p>Health Department Contact: {{neiba.health_number}}</p>
+      <p>Police Department Contact: {{neiba.police_number}}</p>
+    </div>
+  </div>
+  <hr>
+  <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"></div>
+  <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10">
+    {% for post in posts %} {% if post.editor.neighborhood.id == neiba.id%}
+    <div class="card card-default" style="margin-bottom:50px">
+      <div class="card-header">
+        {% if post.editor.profille_pic %}
+        <img src="{{post.editor.profille_pic.url}}" alt="" class="img-fluid rounded-circle" style="width:10%;height:10%">
+        <a href="#">{{post.editor}}</a> {% endif %}
+      </div>
+      <div class="card-body">
+        <p>{{post.post}}</p>
+      </div>
+      <div class="card-footer">
+        <p><b>{{post.post_date | timesince}} ago</b></p>
+      </div>
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+  <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"></div>
+  {% elif neiba.name == 'UpperKabete'%}
+  <div class="row mt-5">
+    <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5">
+      <img src="/static/img/architecture/house1.jpeg" alt="" style="height:100%;">
+    </div>
+    <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2"></div>
+    <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5 mt-1">
+      <p>Name: {{neiba.name | title}}</p>
+      <p>Location: <i>{{neiba.location | title}}</i></p>
+      <p>Number of occupants: <b>{{neiba.occupants_count}}</b></p>
+      <p>Health Department Contact: {{neiba.health_number}}</p>
+      <p>Police Department Contact: {{neiba.police_number}}</p>
+    </div>
+  </div>
+  <hr>
+  <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"></div>
+  <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10">
+    {% for post in posts %} {% if post.editor.neighborhood.id == neiba.id%}
+    <div class="card card-default" style="margin-bottom:50px">
+      <div class="card-header">
+        {% if post.editor.profille_pic %}
+        <img src="{{post.editor.profille_pic.url}}" alt="" class="img-fluid rounded-circle" style="width:10%;height:10%">
+        <a href="#">{{post.editor}}</a> {% endif %}
+      </div>
+      <div class="card-body">
+        <p>{{post.post}}</p>
+      </div>
+      <div class="card-footer">
+        <p><b>{{post.post_date | timesince}} ago</b></p>
+      </div>
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+  <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"></div>
+  {% endif %} {% endfor %} {% endif %} {% endfor %}
+</div>
+</div>
+{% endblock %}

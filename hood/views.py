@@ -74,3 +74,21 @@ def view_hood(request):
                                                    "posts":posts,
                                                    "myuser":myuser,
                                                    "current_user":current_user})
+
+
+@login_required(login_url='/accounts/login/')
+def neighborhood(request):
+    test="Neighborhood!!"
+    current_user = request.user
+    myuser = MyUser.get_user()
+    posts = Post.get_post()
+    count = 0
+    neibahood = Neighborhood.get_neighborhood()
+    hood = get_object_or_404(Neighborhood)
+    for neiba in neibahood:
+        for user in myuser:
+            if user.neighborhood.id == neiba.id:
+                count += 1
+    hood.occupants_count = count
+    hood.save()
+    return redirect('view_neighborhood')
