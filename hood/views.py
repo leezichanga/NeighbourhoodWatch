@@ -50,4 +50,14 @@ def view_business(request):
     current_user = request.user
     biz = Business.get_business()
     return render(request,'business.html',{"current_user":current_user,
-                                           "business":biz})    
+                                           "business":biz})
+@login_required(login_url='/accounts/login/')
+def view_profile(request):
+    test="Working!!"
+    current_user = request.user
+    profile = MyUser.get_user()
+    posts = Post.get_post()
+    return render(request,'profile/profile.html',{"test":test,
+                                                  "profile":profile,
+                                                  "current_user":current_user,
+                                                  "posts":posts})
