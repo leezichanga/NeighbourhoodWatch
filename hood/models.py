@@ -33,3 +33,20 @@ class Business(models.Model):
 
     def delete_business(self):
         self.delete()
+
+class MyUser(models.Model):
+    name = models.CharField(max_length=60)
+    id_no = models.CharField(max_length=60)
+    profille_pic = models.ImageField(upload_to ='pics/',blank=True,null=True)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    neighborhood = models.ForeignKey(Neighborhood,on_delete=models.CASCADE)
+    business = models.ForeignKey(Business,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+    def save_user(self):
+        self.save()
+
+    def delete_user(self):
+        self.delete()
