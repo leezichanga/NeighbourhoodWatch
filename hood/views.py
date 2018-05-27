@@ -61,3 +61,16 @@ def view_profile(request):
                                                   "profile":profile,
                                                   "current_user":current_user,
                                                   "posts":posts})
+
+@login_required(login_url='/accounts/login/')
+def view_hood(request):
+    test="Neighborhood!!"
+    current_user = request.user
+    myuser = MyUser.get_user()
+    posts = Post.get_post()
+    neibahood = Neighborhood.get_neighborhood()
+    return render(request,'neighborhood.html',{"test":test,
+                                                   "hood":neibahood,
+                                                   "posts":posts,
+                                                   "myuser":myuser,
+                                                   "current_user":current_user})
