@@ -92,3 +92,15 @@ def neighborhood(request):
     hood.occupants_count = count
     hood.save()
     return redirect('view_neighborhood')
+
+@login_required(login_url='/accounts/login/')
+def search_results(request):
+    if 'biz' in request.GET and request.GET["biz"]:
+        search_term = request.GET.get("biz")
+        searched_biz = Business.find_business(search_term)
+        message = f"{search_term}"
+        return render(request,'search.html',{"message":message,"biz":searched_biz})
+
+    else:
+        message = 'You havent searched for any term'
+        return render(request,'search.html',{"message",message})
