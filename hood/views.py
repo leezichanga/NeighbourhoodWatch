@@ -27,3 +27,21 @@ def create_profile(request):
     else:
         form = CreateProfileForm()
     return render(request,'profile/create.html',{"test":test,"upload_form":form})
+
+@login_required(login_url='/accounts/login/')
+def new_post(request):
+    current_user = request.user
+    myuser = MyUser.get_user()
+    for user in myuser:
+        if user.user.id == current_user.id:
+            if request.method == 'POST':
+                post_form = PostForm(request.POST,request.FILES)
+                if post_form.is_valid():
+                    post = post_form.save(commit=False)
+                    post.editor = user
+                    post.save()
+                    return redirect(index)
+            else:
+                post_form = PostForm()
+            return render(request,'post.html',{"post_form":post_form})
+        
