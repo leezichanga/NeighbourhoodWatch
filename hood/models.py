@@ -18,3 +18,18 @@ class Neighborhood(models.Model):
 
     def delete_neighborhood(self):
         self.delete()
+
+class Business(models.Model):
+    name = models.CharField(max_length=60)
+    business_email = models.EmailField(max_length=60)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    neighborhood = models.ForeignKey(Neighborhood,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+    def save_business(self):
+        self.save()
+
+    def delete_business(self):
+        self.delete()
