@@ -1,0 +1,38 @@
+{% load bootstrap3 %}
+<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Montserrat" rel="stylesheet">
+<nav class="navbar navbar-light fixed-top" style="background: -moz-linear-gradient(45deg, #ff00ff 0%, #00ffff 91%, #00ffff 100%); /* ff3.6+ */
+background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #ff00ff), color-stop(91%, #00ffff), color-stop(100%, #00ffff)); /* safari4+,chrome */
+background: -webkit-linear-gradient(45deg, #ff00ff 0%, #00ffff 91%, #00ffff 100%); /* safari5.1+,chrome10+ */
+background: -o-linear-gradient(45deg, #ff00ff 0%, #00ffff 91%, #00ffff 100%); /* opera 11.10+ */
+background: -ms-linear-gradient(45deg, #ff00ff 0%, #00ffff 91%, #00ffff 100%); /* ie10+ */
+background: linear-gradient(45deg, #ff00ff 0%, #00ffff 91%, #00ffff 100%); /* w3c */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffff', endColorstr='#ff00ff',GradientType=1 ); /* ie6-9 */">
+  <a class="navbar-brand" href="/" style="font-size:25px;font-family: 'Indie Flower', cursive;"><b>Know Your Neighbor</b></a> {% if user.is_authenticated %}
+  <div class="col-sm-4 col-md-4">
+    <form action="{% url 'search_results' %}" role="search" class="navbar-form">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search Business" name="biz">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">Search
+                </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  {% endif %}
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav" style="font-family:'Montserrat',sans-serrif">
+      {% if user.is_authenticated %}
+      <a class="nav-item nav-link active" href="/">Home</a>
+      <a class="nav-item nav-link active" href="{% url 'profile' %}">Profile</a>
+      <a class="nav-item nav-link active" href="{% url 'hood' %}">Neighborhood</a>
+      <a class="nav-item nav-link active" href="{% url 'biz' %}">Business</a>
+      <a class="nav-item nav-link active" href="/logout">LogOut</a> {% else %}
+      <p><a class="nav-item nav-link active" href="{% url 'auth_login' %}">LogIn</a> or <a href="/accounts/register/" class="nav-item nav-link active">Sign Up</a></p>
+      {% endif %}
+    </div>
+  </div>
+</nav>
