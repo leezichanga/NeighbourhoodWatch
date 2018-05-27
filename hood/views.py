@@ -44,4 +44,10 @@ def new_post(request):
             else:
                 post_form = PostForm()
             return render(request,'post.html',{"post_form":post_form})
-        
+
+@login_required(login_url='/accounts/login/')
+def view_business(request):
+    current_user = request.user
+    biz = Business.get_business()
+    return render(request,'business.html',{"current_user":current_user,
+                                           "business":biz})    
