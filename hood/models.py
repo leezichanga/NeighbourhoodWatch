@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+
 class Neighborhood(models.Model):
     name =  models.CharField(max_length=60)
     location = models.CharField(max_length=60)
@@ -19,6 +20,26 @@ class Neighborhood(models.Model):
     def delete_neighborhood(self):
         self.delete()
 
+    @classmethod
+    def get_neighborhood(cls):
+        hood = Neighborhood.objects.all()
+        return hood
+
+    @classmethod
+    def find_neighborhood(cls,pk):
+        neighborhood=Neighborhood.objects.filter(pk=Neighborhood.pk)
+        return neighborhood
+
+    @classmethod
+    def update_neighborhood(cls,id,name):
+        updated = Neighborhood.objects.filter(id=Neighborhood.id).update(name=name)
+        return updated
+
+    @classmethod
+    def update_occupants(cls,id,occupants_count):
+        occupied = Neighborhood.objects.filter(id=Neighborhood.id).update(occupants_count=occupants_count)
+        return occupied
+
 class Business(models.Model):
     name = models.CharField(max_length=60)
     business_email = models.EmailField(max_length=60)
@@ -33,6 +54,20 @@ class Business(models.Model):
 
     def delete_business(self):
         self.delete()
+
+    @classmethod
+    def get_business(cls):
+        biz = Business.objects.all()
+        return biz
+
+    @classmethod
+    def find_business(cls,search_term):
+        business = cls.objects.filter(name__icontains=search_term)
+        return business
+
+    @classmethod
+    def update_business(cls,id,name):
+        updated = Business.objects.filter(id=business.id).update(name=name)
 
 class MyUser(models.Model):
     name = models.CharField(max_length=60)
@@ -51,6 +86,10 @@ class MyUser(models.Model):
     def delete_user(self):
         self.delete()
 
+    @classmethod
+    def get_user(cls):
+        users = MyUser.objects.all()
+        return users
 
 class Post(models.Model):
     post = models.TextField()
@@ -68,3 +107,8 @@ class Post(models.Model):
 
     def delete_post(self):
         self.delete()
+
+    @classmethod
+    def get_post(cls):
+        post = Post.objects.all()
+        return post
