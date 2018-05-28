@@ -5,7 +5,7 @@
     <div class="col-md-4"></div>
     <div class="col-md-4 mt-5">
       {% if form.errors %}
-      <p>Password or Username is incorrect</p>
+      <p>Incorrect Password or username </p>
       {% endif %}
       <div class="card mt-5">
         <div class="card-header">
@@ -17,7 +17,7 @@
             <div class="form-group" style="padding-left:40%;">
               <input type="submit" class="btn btn-primary btn-md" value="Login">
             </div>
-            <p>Are you new here? <a href="/accounts/register/" class="btn btn-default">Sign Up</a></p>
+            <p>Do you have an account? <a href="/accounts/register/" class="btn btn-default">Sign Up</a></p>
             <input type="hidden" name="next" value="{% url 'index' %}">
           </form>
         </div>

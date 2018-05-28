@@ -2,18 +2,26 @@
 <div class="styleee" style=" background-color:#c4b9b8; font-size: 20px;">
   <div class="container mt-5">
     <div class="row mt-5"></div>
+    {% for prof in profile %} {% if prof.user.id == current_user.id%}
+    <div class="row mt-5">
+      <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"></div>
+      <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5">
+        {% if prof.profille_pic %}
+        <img src="{{prof.profille_pic.url}}" alt="" class="img-thumbnail" style="height:100%;"> {% endif %}
+      </div>
+      <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"></div>
+      <div class="col-md-5 col-lg-5 col-sm-5 col-xs-5">
+        <p>Name: <b>{{prof.name | title}}</b></p>
+        <p><b>nickname:</b> <i>{{prof.user}}</i></p>
+        <p>{{prof.neighborhood}} <i><b><small>({{prof.neighborhood.location}})</small></b></i></p>
+        <p>Type of business: <a href="#">{{prof.business}}</a></p>
+      </div>
+    </div>
+    <hr>
     <div class="row mt-5">
       <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"></div>
       <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10">
-
-        <p>Welcome to Neighborhood watch, Do you have a profile? <a href="{% url 'new_profile' %}" class="btn btn-default">Create Profile</a></p>
-
-        <div class="card" style="margin-bottom:60px;">
-          <div class="card-header">
-            <p>Write posts here? <a href="{% url 'post' %}">Post</a></p>
-          </div>
-        </div>
-        {% for post in posts %}
+        {% for post in posts %} {% if post.editor.id == prof.id%}
         <div class="card card-default" style="margin-bottom:50px">
           <div class="card-header">
             {% if post.editor.profille_pic %}
@@ -27,10 +35,11 @@
             <p><b>{{post.post_date | timesince}} ago</b></p>
           </div>
         </div>
-        {% endfor %}
+        {% endif %} {% endfor %}
       </div>
       <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1"></div>
     </div>
+    {% endif %} {% endfor %}
   </div>
 </div>
 {% endblock %}

@@ -1,19 +1,21 @@
 {% extends 'base.html' %} {% load bootstrap3 %} {% load static %} {% block content %} {{block.super}}
-<div class="container mt-5">
-  <div class="row mt-5"></div>
-  <div class="row mt-5">
-    <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4"></div>
-    <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
-      {% for biz in business %}
-      <div class="card" style="margin-bottom:80px;">
-        <div class="card-body">
-          <p style="padding-left:100px;"><a href="#">{{biz.name}}</a></p>
-          <p style="padding-left:60px;"><i>{{biz.business_email}}</i></p>
+<div class="styleee" style=" background-color:#c4b9b8; font-size: 20px;">
+  <div class="container mt-5">
+    <div class="row mt-5"></div>
+    <div class="row mt-5">
+      <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4"></div>
+      <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
+        {% for biz in business %}
+        <div class="card" style="margin-bottom:80px;">
+          <div class="card-body">
+            <p style="padding-left:100px;"><a href="#">{{biz.name}}</a></p>
+            <p style="padding-left:60px;"><i>{{biz.business_email}}</i></p>
+          </div>
         </div>
+        {% endfor %}
       </div>
-      {% endfor %}
+      <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4"></div>
     </div>
-    <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4"></div>
   </div>
 </div>
 {% endblock %}

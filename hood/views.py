@@ -1,7 +1,10 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
+from django.template import RequestContext
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from .models import MyUser,Neighborhood,Post,Business
+from .forms import CreateProfileForm,PostForm
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -28,7 +31,7 @@ def create_profile(request):
             return redirect(view_profile)
     else:
         form = CreateProfileForm()
-    return render(request,'profile/create.html',{"test":test,"upload_form":form})
+    return render(request,'create_profile.html',{"test":test,"upload_form":form})
 
 @login_required(login_url='/accounts/login/')
 def new_post(request):
@@ -45,7 +48,7 @@ def new_post(request):
                     return redirect(index)
             else:
                 post_form = PostForm()
-            return render(request,'post.html',{"post_form":post_form})
+            return render(request,'write_posts.html',{"post_form":post_form})
 
 @login_required(login_url='/accounts/login/')
 def view_business(request):
@@ -59,7 +62,7 @@ def view_profile(request):
     current_user = request.user
     profile = MyUser.get_user()
     posts = Post.get_post()
-    return render(request,'profile/profile.html',{"test":test,
+    return render(request,'profile.html',{"test":test,
                                                   "profile":profile,
                                                   "current_user":current_user,
                                                   "posts":posts})
