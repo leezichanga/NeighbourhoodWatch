@@ -4,6 +4,9 @@ Project Name: Neighborhood Watch
 
 Developer: Elizabeth Ichang'a
 
+## Description
+Website that allows users living in the same neighborhood communicate and share stories and experiences they have had.
+
 ## Setup and Installation
 Clone project repository
 
